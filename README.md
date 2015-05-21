@@ -1,3 +1,3 @@
 # vim_profile
-vim  configuration
+the vim_profile
 save the configuration of vim
