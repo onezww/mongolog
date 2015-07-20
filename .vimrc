@@ -10,6 +10,8 @@ set guifont=Courier_New:h10:cANSI   " 设置字体
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
 autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 set ruler           " 显示标尺  
+set cursorline      " 突出显示当前行
+
 set showcmd         " 输入的命令显示出来，看的清楚些  
 "set cmdheight=1     " 命令行（在状态行下）的高度，设置为1  
 "set whichwrap+=<,>,h,l   " 允许backspace和光标键跨越行边界(不建议)  
@@ -33,9 +35,6 @@ endif
 "   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 
 "endif 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"实用设置
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "设置行号
 set number
@@ -43,6 +42,7 @@ set number
 "语法高亮 
 syntax on  
 
+" Tab键的宽度
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -50,7 +50,36 @@ set softtabstop=4
 " 自动缩进
 set autoindent
 set cindent
-" Tab键的宽度
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"实用设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"禁止生成临时文件
+set nobackup    
+set noswapfile  
+
+"自动补全
+:inoremap ( ()<ESC>i
+:inoremap ) <c-r>=ClosePair(')')<CR>
+:inoremap { {<CR>}<ESC>O
+:inoremap } <c-r>=ClosePair('}')<CR>
+:inoremap [ []<ESC>i
+:inoremap ] <c-r>=ClosePair(']')<CR>
+:inoremap " ""<ESC>i
+:inoremap ' ''<ESC>i
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endfunction
+filetype plugin indent on 
+"打开文件类型检测, 加了这句才可以用智能补全
+set completeopt=longest,menu
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
