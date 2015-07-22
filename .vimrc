@@ -23,6 +23,10 @@ set foldenable      " 允许折叠
 set foldmethod=manual   " 手动折叠  
 "set background=dark "背景使用黑色 
 set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限  
+filetype plugin indent on 
+filetype plugin on
+filetype off
+
 " 显示中文帮助
 if version >= 603
     set helplang=cn
@@ -75,7 +79,6 @@ function! ClosePair(char)
         return a:char
     endif
 endfunction
-filetype plugin indent on 
 "打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 
@@ -158,6 +161,5 @@ let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的 
 let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim 
 let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
-filetype plugin indent on
-filetype plugin on
 set ofu=syntaxcomplete#Complete
+
