@@ -46,6 +46,9 @@ set number
 "语法高亮 
 syntax on  
 
+''设置编码为utf-8
+set encoding=utf-8
+
 " Tab键的宽度
 set expandtab
 set tabstop=4
