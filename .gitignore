@@ -1,0 +1,7 @@
+.vscode/
+*.out
+log/
+upload/
+articles/
+migrations/
+sublime.*
